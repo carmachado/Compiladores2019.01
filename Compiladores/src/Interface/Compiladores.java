@@ -5,6 +5,18 @@
  */
 package Interface;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
+import javax.swing.JFileChooser;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
 /**
  *
  * @author Pichau
@@ -14,8 +26,31 @@ public class Compiladores extends javax.swing.JFrame {
     /**
      * Creates new form Compiladores
      */
+    String arquivo;
+
+    public String getArquivo() {
+        return arquivo;
+    }
+
+    public void setArquivo(String arquivo) {
+        jLabel1.setText("Arquivo: " + arquivo);
+        if (arquivo.equals("")) {
+            jTextArea1.setText("");
+            jTextArea2.setText("");
+        } else {
+            try {
+                jTextArea1.setText(Files.readAllLines(Paths.get(arquivo)).stream().collect(Collectors.joining("\n")));
+                jTextArea2.setText("");
+            } catch (IOException ex) {
+                Logger.getLogger(Compiladores.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        this.arquivo = arquivo;
+    }
+
     public Compiladores() {
         initComponents();
+        setArquivo("");
     }
 
     /**
@@ -26,22 +61,321 @@ public class Compiladores extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        jButton1 = new javax.swing.JButton();
+        jToolBar1 = new javax.swing.JToolBar();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextArea2 = new javax.swing.JTextArea();
+        getContentPane().setBackground(Color.WHITE);
+        textLineNumber1 = new Interface.TextLineNumber(jTextArea1);
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Compilador");
+        setBackground(new java.awt.Color(255, 255, 255));
+        setMinimumSize(new java.awt.Dimension(900, 700));
+        setPreferredSize(new java.awt.Dimension(900, 600));
+        setSize(new java.awt.Dimension(900, 600));
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                formKeyTyped(evt);
+            }
+        });
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jToolBar1.setBackground(new java.awt.Color(255, 255, 255));
+        jToolBar1.setRollover(true);
+
+        jButton2.setBackground(new java.awt.Color(255, 255, 255));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconfinder_New_27859.png"))); // NOI18N
+        jButton2.setText("novo [ctrl-n]");
+        jButton2.setFocusable(false);
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setMaximumSize(new java.awt.Dimension(67, 60));
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton2);
+
+        jButton3.setBackground(new java.awt.Color(255, 255, 255));
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconfinder_Open_27861.png"))); // NOI18N
+        jButton3.setText("abrir [ctrl-o]");
+        jButton3.setFocusable(false);
+        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton3);
+
+        jButton4.setBackground(new java.awt.Color(255, 255, 255));
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconfinder_Save_27876.png"))); // NOI18N
+        jButton4.setText("salvar [ctrl-s]");
+        jButton4.setFocusable(false);
+        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton4);
+
+        jButton5.setBackground(new java.awt.Color(255, 255, 255));
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconfinder_Copy_27840.png"))); // NOI18N
+        jButton5.setText("copiar [ctrl-c]");
+        jButton5.setFocusable(false);
+        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton5);
+
+        jButton6.setBackground(new java.awt.Color(255, 255, 255));
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconfinder_Paste_27862.png"))); // NOI18N
+        jButton6.setText("colar [ctrl-v]");
+        jButton6.setFocusable(false);
+        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton6.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton6);
+
+        jButton7.setBackground(new java.awt.Color(255, 255, 255));
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconfinder_Cut_27841.png"))); // NOI18N
+        jButton7.setText("recortar [ctrl-x]");
+        jButton7.setFocusable(false);
+        jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton7.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton7);
+
+        jButton8.setBackground(new java.awt.Color(255, 255, 255));
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconfinder_Play_27865.png"))); // NOI18N
+        jButton8.setText("compilar [F9]");
+        jButton8.setFocusable(false);
+        jButton8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton8.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton8);
+
+        jButton9.setBackground(new java.awt.Color(255, 255, 255));
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/iconfinder_User_27887.png"))); // NOI18N
+        jButton9.setText("equipe [F1]");
+        jButton9.setFocusable(false);
+        jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton9.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jButton9);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 900;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        getContentPane().add(jToolBar1, gridBagConstraints);
+
+        jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jTextArea1.setMinimumSize(new java.awt.Dimension(900, 400));
+        jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jTextArea1KeyTyped(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTextArea1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 877;
+        gridBagConstraints.ipady = 377;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(jScrollPane1, gridBagConstraints);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setText("Arquivo: ");
+        jPanel1.add(jLabel1);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 900;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 0, 0, 0);
+        getContentPane().add(jPanel1, gridBagConstraints);
+
+        jScrollPane2.setBackground(new java.awt.Color(255, 255, 255));
+
+        jTextArea2.setEditable(false);
+        jTextArea2.setColumns(20);
+        jTextArea2.setRows(5);
+        jScrollPane2.setViewportView(jTextArea2);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 877;
+        gridBagConstraints.ipady = 73;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.WEST;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        getContentPane().add(jScrollPane2, gridBagConstraints);
+
+        textLineNumber1.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout textLineNumber1Layout = new javax.swing.GroupLayout(textLineNumber1);
+        textLineNumber1.setLayout(textLineNumber1Layout);
+        textLineNumber1Layout.setHorizontalGroup(
+            textLineNumber1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        textLineNumber1Layout.setVerticalGroup(
+            textLineNumber1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        getContentPane().add(textLineNumber1, new java.awt.GridBagConstraints());
+        jScrollPane1.setRowHeaderView(textLineNumber1);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        jTextArea1.setText("");
+        setArquivo("");
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        jTextArea2.setText("Compilação de programas ainda não foi implementada");
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        jTextArea2.setText("Icons made by https://www.iconfinder.com/iconsets/musthave\n"
+                + "TextlineNumber made by https://www.programcreek.com/java-api-examples/?code=iapafoto/DicomViewer/DicomViewer-master/src/javaclsimple/editor/JCompilableCodeEditor.java\n"
+                + "Carlos Eduardo Machado e Gabriel Ariel Degenhardt");
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivos de texto", "txt");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showOpenDialog(null);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            setArquivo(chooser.getSelectedFile().getPath());
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        if ("".equals(getArquivo())) {
+            JFileChooser chooser = new JFileChooser();
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivos de texto", "txt");
+            chooser.setFileFilter(filter);
+            int retrival = chooser.showSaveDialog(null);
+            if (retrival == JFileChooser.APPROVE_OPTION) {
+                try (FileWriter fw = new FileWriter(chooser.getSelectedFile() + ".txt")) {
+                    fw.write(jTextArea1.getText());
+                } catch (Exception ex) {
+                }
+                setArquivo(chooser.getSelectedFile().getPath() + ".txt");
+            }
+        } else {
+            try (FileWriter fw = new FileWriter(getArquivo())) {
+                fw.write(jTextArea1.getText());
+            } catch (Exception ex) {
+            }
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        jTextArea1.copy();
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        jTextArea1.paste();
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        jTextArea1.cut();
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void formKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyTyped
+
+    }//GEN-LAST:event_formKeyTyped
+
+    private void jTextArea1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyTyped
+        
+    }//GEN-LAST:event_jTextArea1KeyTyped
+
+    private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
+        if (evt.isControlDown()) {
+            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_N) {
+                jButton2ActionPerformed(null);
+            }
+            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_O) {
+                jButton3ActionPerformed(null);
+            }
+            if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_S) {
+                jButton4ActionPerformed(null);
+            }
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F9) {
+            jButton8ActionPerformed(null);
+        } else if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_F1) {
+            jButton9ActionPerformed(null);
+        }
+    }//GEN-LAST:event_jTextArea1KeyPressed
 
     /**
      * @param args the command line arguments
@@ -54,7 +388,7 @@ public class Compiladores extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -79,5 +413,22 @@ public class Compiladores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JToolBar jToolBar1;
+    private Interface.TextLineNumber textLineNumber1;
     // End of variables declaration//GEN-END:variables
 }
