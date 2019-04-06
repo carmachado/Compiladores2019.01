@@ -287,7 +287,6 @@ public class Compiladores extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         jTextArea2.setText("Icons made by https://www.iconfinder.com/iconsets/musthave\n"
-                + "TextlineNumber made by https://www.programcreek.com/java-api-examples/?code=iapafoto/DicomViewer/DicomViewer-master/src/javaclsimple/editor/JCompilableCodeEditor.java\n"
                 + "Carlos Eduardo Machado e Gabriel Ariel Degenhardt");
     }//GEN-LAST:event_jButton9ActionPerformed
 
