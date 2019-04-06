@@ -79,8 +79,6 @@ public class Compiladores extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
-        getContentPane().setBackground(Color.WHITE);
-        textLineNumber1 = new Interface.TextLineNumber(jTextArea1);
 
         jButton1.setText("jButton1");
 
@@ -229,6 +227,7 @@ public class Compiladores extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTextArea1);
+        jTextArea1.setBorder(new NumberedBorder());
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -272,22 +271,6 @@ public class Compiladores extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         getContentPane().add(jScrollPane2, gridBagConstraints);
-
-        textLineNumber1.setBackground(new java.awt.Color(255, 255, 255));
-
-        javax.swing.GroupLayout textLineNumber1Layout = new javax.swing.GroupLayout(textLineNumber1);
-        textLineNumber1.setLayout(textLineNumber1Layout);
-        textLineNumber1Layout.setHorizontalGroup(
-            textLineNumber1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        textLineNumber1Layout.setVerticalGroup(
-            textLineNumber1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        getContentPane().add(textLineNumber1, new java.awt.GridBagConstraints());
-        jScrollPane1.setRowHeaderView(textLineNumber1);
 
         pack();
         setLocationRelativeTo(null);
@@ -429,6 +412,5 @@ public class Compiladores extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JToolBar jToolBar1;
-    private Interface.TextLineNumber textLineNumber1;
     // End of variables declaration//GEN-END:variables
 }
