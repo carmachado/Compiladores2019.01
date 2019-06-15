@@ -5,10 +5,19 @@
  */
 package Interface;
 
+import Componentes.StringUtils;
+import Sintatico.AnalysisError;
+import Sintatico.LexicalError;
+import Sintatico.Lexico;
+import Sintatico.Semantico;
+import Sintatico.Sintatico;
+import Sintatico.Token;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Reader;
+import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.logging.Level;
@@ -217,6 +226,7 @@ public class Compiladores extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
+        jTextArea1.setTabSize(2);
         jTextArea1.setMinimumSize(new java.awt.Dimension(900, 400));
         jTextArea1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -282,7 +292,21 @@ public class Compiladores extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        jTextArea2.setText("Compilação de programas ainda não foi implementada");
+        if ((jTextArea1.getText()).trim().isEmpty()) {
+            jTextArea2.setText("nenhum programa para compilar");
+            return;
+        }
+        
+        Lexico lexico = new Lexico(new StringReader(jTextArea1.getText()));
+        Sintatico parse = new Sintatico();
+        Semantico semantico = new Semantico();
+        Token t = null;
+        try {
+            parse.parse(lexico, semantico);
+            jTextArea2.setText("programa compilado com sucesso");
+        } catch (AnalysisError ex) {
+            jTextArea2.setText("Erro na linha " + ex.getLinha() + " - " + ex.getMessage());
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -338,7 +362,7 @@ public class Compiladores extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyTyped
 
     private void jTextArea1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyTyped
-        
+
     }//GEN-LAST:event_jTextArea1KeyTyped
 
     private void jTextArea1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextArea1KeyPressed
